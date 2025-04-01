@@ -12,12 +12,9 @@ help:
 	@echo "lint - check style with flake8"
 	@echo "format - format code with black"
 	@echo "docs - generate and open HTML documentation"
-	@echo "docker-build - build the Docker image"
-	@echo "docker-run - run the services defined in docker-compose.yml"
 	@echo "install - install the package"
 	@echo "dev-install - install development dependencies"
-	@echo "server - run the API server"
-	@echo "client - run the web client"
+
 
 clean: clean-pyc clean-build clean-test
 
@@ -54,21 +51,9 @@ docs:
 	cd docs && mkdocs build
 	cd docs && mkdocs serve
 
-docker-build:
-	cd docker && docker-compose build
-
-docker-run:
-	cd docker && docker-compose up
-
 install:
 	pip install -e .
 
 dev-install:
 	pip install -e ".[dev]"
 	pip install -r requirements-dev.txt
-
-server:
-	uvicorn api:app --reload --port 5555
-
-client:
-	python web.py
